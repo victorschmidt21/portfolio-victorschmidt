@@ -71,7 +71,7 @@ export default async function ProjectPage({
         )}
       </div>
 
-      <div className="mt-14 grid gap-4">
+      <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
         {(
           [
             ["Problema", project.problem],
@@ -79,12 +79,12 @@ export default async function ProjectPage({
             ["Resultado", project.result],
           ] as const
         ).map(([label, text], i) => (
-          <Reveal key={label} delay={i * 0.1}>
-            <div className="rounded-[14px] border border-border bg-surface p-6 transition-colors duration-300 hover:border-accent-line">
+          <Reveal key={label} delay={i * 0.12}>
+            <div className="border-t-2 border-accent-line pt-5">
               <div className="mb-3 font-mono text-[11px] tracking-[0.12em] text-accent">
                 {label.toUpperCase()}
               </div>
-              <p className="leading-relaxed text-text-2">{text}</p>
+              <p className="text-sm leading-relaxed text-text-2">{text}</p>
             </div>
           </Reveal>
         ))}

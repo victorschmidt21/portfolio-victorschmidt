@@ -162,6 +162,40 @@ body {
   animation-play-state: paused;
 }
 
+/* Linhas de terminal que aparecem em sequência dentro de um Reveal */
+.stagger-line {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  transition-delay: calc(0.25s + var(--i, 0) * 0.15s);
+}
+
+.is-visible .stagger-line {
+  opacity: 1;
+}
+
+/* Barras de benchmark que crescem ao entrar na tela */
+.grow-bar {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.is-visible .grow-bar {
+  transform: scaleX(1);
+}
+
+/* Conectores com fluxo de dados (diagrama de integrações) */
+@keyframes dashflow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.flow-line {
+  stroke-dasharray: 5 6;
+  animation: dashflow 1.4s linear infinite;
+}
+
 /* Scanline sutil nas capas dos cards (hover) */
 @keyframes scan {
   0% {
@@ -215,10 +249,13 @@ body {
   .animate-blink,
   .animate-pulse-dot,
   .animate-scan,
-  .marquee-track {
+  .marquee-track,
+  .flow-line {
     animation: none;
   }
-  [data-reveal] {
+  [data-reveal],
+  .stagger-line,
+  .grow-bar {
     opacity: 1;
     transform: none;
     transition: none;

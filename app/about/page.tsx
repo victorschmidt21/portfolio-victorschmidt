@@ -3,7 +3,6 @@ import { experiences } from "@/data/experience";
 import { SkillsGrid } from "@/components/SkillsGrid";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/constants";
 
@@ -51,7 +50,7 @@ export default function AboutPage() {
             kicker="EXPERIÊNCIA"
             title="Linha do tempo"
           />
-          <div className="relative grid gap-8 border-l border-border pl-8">
+          <div className="relative grid gap-14 border-l border-border pl-8">
             {experiences.map((exp, i) => (
               <Reveal key={exp.company} delay={i * 0.1}>
                 <div className="relative">
@@ -59,40 +58,34 @@ export default function AboutPage() {
                     aria-hidden
                     className="absolute -left-[37px] top-2 h-2.5 w-2.5 rounded-full border border-accent-line bg-accent shadow-[0_0_8px_var(--accent)]"
                   />
-                  <div className="rounded-[14px] border border-border bg-surface p-6 transition-colors duration-300 hover:border-accent-line sm:p-8">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="text-lg font-semibold">{exp.company}</h3>
-                      <span className="font-mono text-xs text-accent">
-                        {exp.period}
-                      </span>
-                    </div>
-                    <div className="mt-1 text-sm font-medium text-text-2">
-                      {exp.title}
-                    </div>
-                    <p className="mt-3 text-[13px] leading-relaxed text-text-2">
-                      {exp.description}
-                    </p>
-                    <ul className="mt-4 grid gap-2">
-                      {exp.achievements.map((achievement) => (
-                        <li
-                          key={achievement}
-                          className="flex gap-3 text-[13px] leading-relaxed text-text-2"
-                        >
-                          <span aria-hidden className="mt-0.5 text-accent">
-                            →
-                          </span>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <Badge key={tech} variant="tag">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="text-xl font-semibold">{exp.company}</h3>
+                    <span className="font-mono text-xs text-accent">
+                      {exp.period}
+                    </span>
                   </div>
+                  <div className="mt-1 text-sm font-medium text-text-2">
+                    {exp.title}
+                  </div>
+                  <p className="mt-3 max-w-[64ch] text-sm leading-relaxed text-text-2">
+                    {exp.description}
+                  </p>
+                  <ul className="mt-4 grid gap-2.5">
+                    {exp.achievements.map((achievement) => (
+                      <li
+                        key={achievement}
+                        className="flex gap-3 text-sm leading-relaxed text-text-2"
+                      >
+                        <span aria-hidden className="mt-0.5 text-accent">
+                          →
+                        </span>
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 font-mono text-xs text-text-3">
+                    {exp.technologies.join(" · ")}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -105,16 +98,16 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[840px] px-6 py-24 lg:px-8">
           <SectionHeader number="02" kicker="FORMAÇÃO" title="Formação" />
           <Reveal>
-            <div className="rounded-[14px] border border-border bg-surface p-6 sm:p-8">
+            <div className="border-t-2 border-accent-line pt-6">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="text-lg font-semibold">
+                <h3 className="text-xl font-semibold">
                   BIOPARK — Engenharia de Software
                 </h3>
                 <span className="font-mono text-xs text-accent">
                   2024 — 2027
                 </span>
               </div>
-              <p className="mt-3 text-[13px] leading-relaxed text-text-2">
+              <p className="mt-3 max-w-[64ch] text-sm leading-relaxed text-text-2">
                 Bacharelado focado em desenvolvimento de sistemas, engenharia
                 de requisitos, qualidade de software e metodologias ágeis.
               </p>

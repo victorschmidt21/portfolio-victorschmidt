@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { featuredProjects } from "@/data/projects";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { SkillsGrid } from "@/components/SkillsGrid";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
@@ -96,23 +96,17 @@ export default function Home() {
       {/* ===== Marquee de stack ===== */}
       <Marquee />
 
-      {/* ===== Projetos (banda elevada) ===== */}
-      <section id="projetos" className="relative bg-elev">
-        <div className="mx-auto max-w-[1080px] px-6 py-24 lg:px-8">
+      {/* ===== Projetos (linhas alternadas, estilo oxc.rs) ===== */}
+      <section id="projetos">
+        <div className="mx-auto max-w-[1080px] px-6 py-28 lg:px-8">
           <SectionHeader
             number="01"
             kicker="PROJETOS"
             title="Projetos em destaque"
             description="Problemas reais, soluções medidas — cada projeto com impacto quantificado."
           />
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {featuredProjects.map((project, i) => (
-              <Reveal key={project.slug} delay={i * 0.12}>
-                <ProjectCard project={project} />
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.2} className="mt-10">
+          <ProjectShowcase projects={featuredProjects} />
+          <Reveal delay={0.2} className="mt-20">
             <Link
               href="/projects"
               className="border-b border-accent-line pb-px font-medium text-accent transition-colors hover:border-accent"
@@ -124,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* ===== Stats (banda com glow) ===== */}
-      <section className="relative overflow-hidden border-y border-border">
+      <section className="relative overflow-hidden border-y border-border bg-elev">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[820px] max-w-full -translate-x-1/2 -translate-y-1/2"
@@ -147,9 +141,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== Skills ===== */}
+      {/* ===== Skills (lista tipográfica) ===== */}
       <section>
-        <div className="mx-auto max-w-[1080px] px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-[1080px] px-6 py-28 lg:px-8">
           <SectionHeader
             number="02"
             kicker="STACK"
