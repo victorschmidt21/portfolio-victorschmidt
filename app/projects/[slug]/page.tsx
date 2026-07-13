@@ -5,7 +5,6 @@ import { projects, getProject } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -60,15 +59,15 @@ export default async function ProjectPage({
         ))}
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-3.5">
-        <Button href={project.repository} external>
-          Ver no GitHub →
-        </Button>
-        {project.liveUrl && (
-          <Button href={project.liveUrl} variant="secondary" external>
-            Live demo
-          </Button>
-        )}
+      <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-border bg-surface px-4 py-3 font-mono text-xs text-text-2">
+        <span className="inline-flex items-center gap-2 text-accent">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_6px_var(--accent)]" />
+          Em produção · {project.company}
+        </span>
+        <span className="text-text-3">
+          — código proprietário; este estudo de caso descreve arquitetura e
+          resultados medidos.
+        </span>
       </div>
 
       <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8">

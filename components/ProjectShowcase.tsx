@@ -23,8 +23,14 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
         <Reveal key={project.slug}>
           <article className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div className={i % 2 === 1 ? "lg:order-2" : undefined}>
-              <div className="font-mono text-xs tracking-[0.14em] text-accent">
-                {`// ${categoryLabels[project.category]}`}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <span className="font-mono text-xs tracking-[0.14em] text-accent">
+                  {`// ${categoryLabels[project.category]}`}
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-accent-line bg-accent-dim px-3 py-0.5 font-mono text-[11px] text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_6px_var(--accent)]" />
+                  Em produção · {project.company}
+                </span>
               </div>
               <h3 className="mt-4 text-[clamp(24px,3.5vw,34px)] font-semibold leading-tight tracking-tight">
                 <Link

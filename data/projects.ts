@@ -1,3 +1,5 @@
+/** Projeto profissional: desenvolvido em empresa, rodando em produção.
+ *  Código proprietário — sem repositório público; métricas reais. */
 export interface Project {
   slug: string;
   title: string;
@@ -8,10 +10,18 @@ export interface Project {
   result: string;
   impact: string;
   technologies: string[];
-  repository: string;
-  liveUrl?: string;
+  company: string;
   featured: boolean;
   category: "fullstack" | "backend" | "devops" | "ai";
+  year: string;
+}
+
+/** Projeto de lab: estudo/experimento pessoal, código aberto no GitHub. */
+export interface LabProject {
+  name: string;
+  description: string;
+  technologies: string[];
+  repository: string;
   year: string;
 }
 
@@ -39,7 +49,7 @@ export const projects: Project[] = [
       "Claude",
       "Gemini",
     ],
-    repository: "https://github.com/victorschmidt21",
+    company: "Terceirizemais",
     featured: true,
     category: "ai",
     year: "2026",
@@ -65,7 +75,7 @@ export const projects: Project[] = [
       "Grafana",
       "cAdvisor",
     ],
-    repository: "https://github.com/victorschmidt21",
+    company: "Terceirizemais",
     featured: true,
     category: "devops",
     year: "2026",
@@ -85,7 +95,7 @@ export const projects: Project[] = [
       "Mais de 20 processos manuais automatizados, ambientes de dev e produção padronizados e redução significativa de retrabalho operacional.",
     impact: "20+ processos manuais automatizados",
     technologies: ["Node.js", "TypeScript", "NestJS", "Docker"],
-    repository: "https://github.com/victorschmidt21",
+    company: "Vorium Company",
     featured: true,
     category: "backend",
     year: "2025",
@@ -105,7 +115,7 @@ export const projects: Project[] = [
       "Processo 100% digitalizado, com histórico centralizado e acompanhamento em tempo real.",
     impact: "Processo manual → 100% digital",
     technologies: ["Flutter", "Node.js", "TypeScript"],
-    repository: "https://github.com/victorschmidt21",
+    company: "AltForce",
     featured: false,
     category: "fullstack",
     year: "2024",
@@ -125,7 +135,7 @@ export const projects: Project[] = [
       "Planilhas eliminadas; equipe de vendas passou a fechar pedidos diretamente pelo aplicativo.",
     impact: "Planilhas manuais eliminadas",
     technologies: ["Flutter", "Node.js", "TypeScript"],
-    repository: "https://github.com/victorschmidt21",
+    company: "AltForce",
     featured: false,
     category: "fullstack",
     year: "2025",
@@ -137,3 +147,54 @@ export const featuredProjects = projects.filter((p) => p.featured);
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
+
+export const labProjects: LabProject[] = [
+  {
+    name: "Scriber",
+    description:
+      "Ferramenta web que transcreve reuniões, entrevistas e aulas a partir de áudio ou vídeo, identificando os diferentes participantes da conversa.",
+    technologies: ["TypeScript", "IA", "Transcrição"],
+    repository: "https://github.com/victorschmidt21/scriber",
+    year: "2026",
+  },
+  {
+    name: "Iron Banker",
+    description:
+      "Plataforma de gestão de despesas com IA: agentes para categorização automática e análise de gastos, com entrada de mensagens via WhatsApp (Evolution API).",
+    technologies: ["NestJS", "Mastra", "Evolution API", "Agentes IA"],
+    repository: "https://github.com/victorschmidt21/iron-banker-backend",
+    year: "2025",
+  },
+  {
+    name: "Fraud Detection — Rinha 2026",
+    description:
+      "Participação na Rinha de Backend: sistema de detecção de fraude com foco em performance e throughput sob carga.",
+    technologies: ["TypeScript", "Performance", "Backend"],
+    repository: "https://github.com/victorschmidt21/fraud-detection-rinha-2026",
+    year: "2026",
+  },
+  {
+    name: "RabbitMQ + NestJS",
+    description:
+      "Estudo de mensageria assíncrona: implementação de filas e eventos com RabbitMQ dentro do NestJS.",
+    technologies: ["NestJS", "RabbitMQ", "Mensageria"],
+    repository: "https://github.com/victorschmidt21/rabbitmq-nestjs",
+    year: "2025",
+  },
+  {
+    name: "Pizzaria API",
+    description:
+      "API de gerenciamento de pizzaria com autenticação JWT para controle de usuários, produtos e pedidos.",
+    technologies: ["Node.js", "Express", "Prisma", "JWT"],
+    repository: "https://github.com/victorschmidt21/pizzaria-backend",
+    year: "2025",
+  },
+  {
+    name: "Cripto em Tempo Real",
+    description:
+      "Dashboard de visualização de criptomoedas em tempo real consumindo a CoinAPI.",
+    technologies: ["TypeScript", "React", "CoinAPI"],
+    repository: "https://github.com/victorschmidt21/projetoCripto",
+    year: "2025",
+  },
+];
