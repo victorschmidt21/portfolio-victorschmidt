@@ -56,7 +56,12 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                 Ver estudo de caso →
               </Link>
             </div>
-            <div className={i % 2 === 1 ? "lg:order-1" : undefined}>
+            {/* max-w evita painel esticado quando empilhado (mobile/tablet) */}
+            <div
+              className={`w-full max-w-[560px] lg:max-w-none ${
+                i % 2 === 1 ? "lg:order-1" : ""
+              }`}
+            >
               {visuals[project.slug]}
             </div>
           </article>
@@ -198,7 +203,7 @@ function IntegrationDiagram() {
               y={y + 25}
               textAnchor="middle"
               fill="var(--text-2)"
-              fontSize="12"
+              fontSize="13"
               fontFamily="var(--font-geist-mono)"
             >
               {label}
@@ -220,7 +225,7 @@ function IntegrationDiagram() {
           y="116"
           textAnchor="middle"
           fill="var(--accent)"
-          fontSize="12"
+          fontSize="13"
           fontWeight="600"
           fontFamily="var(--font-geist-mono)"
         >
@@ -231,7 +236,7 @@ function IntegrationDiagram() {
           y="132"
           textAnchor="middle"
           fill="var(--text-3)"
-          fontSize="10"
+          fontSize="12"
           fontFamily="var(--font-geist-mono)"
         >
           Node · NestJS
@@ -251,7 +256,7 @@ function IntegrationDiagram() {
           y="124"
           textAnchor="middle"
           fill="var(--text-2)"
-          fontSize="11"
+          fontSize="12"
           fontFamily="var(--font-geist-mono)"
         >
           Dashboards
@@ -262,7 +267,7 @@ function IntegrationDiagram() {
           y="216"
           textAnchor="middle"
           fill="var(--text-3)"
-          fontSize="10"
+          fontSize="12"
           fontFamily="var(--font-geist-mono)"
         >
           20+ rotinas manuais automatizadas

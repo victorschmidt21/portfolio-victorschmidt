@@ -107,8 +107,8 @@ function ProfessionalList() {
                 {project.technologies.join(" · ")}
               </p>
             </div>
-            <div className="col-start-2 flex items-center gap-4 sm:col-start-3 sm:flex-col sm:items-end sm:gap-2">
-              <span className="font-mono text-xs text-accent">
+            <div className="col-start-2 flex items-center gap-4 sm:col-start-3 sm:max-w-[170px] sm:flex-col sm:items-end sm:gap-2">
+              <span className="font-mono text-xs leading-relaxed text-accent sm:text-right">
                 {project.impact}
               </span>
               <span

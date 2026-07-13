@@ -74,6 +74,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Âncoras (#contato, #projetos) não podem parar embaixo do header sticky */
+[id] {
+  scroll-margin-top: 88px;
+}
+
+/* Rede de segurança contra scroll horizontal em telas pequenas
+   (clip não cria scroll container, então não quebra position: sticky) */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   background: var(--bg);
   color: var(--text);

@@ -11,7 +11,7 @@ export function Terminal() {
           victor@dev — zsh
         </span>
       </div>
-      <div className="p-5 font-mono text-[12.5px] leading-[1.9] text-text-2">
+      <div className="break-words p-5 font-mono text-[12.5px] leading-[1.9] text-text-2">
         <p>
           <span className="text-accent">$</span> whoami
         </p>
