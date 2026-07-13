@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { experiences } from "@/data/experience";
 import { SkillsGrid } from "@/components/SkillsGrid";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Reveal } from "@/components/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/constants";
@@ -13,110 +15,125 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-[840px] px-6 py-20 lg:px-8">
-      <div className="mb-4 font-mono text-xs tracking-[0.14em] text-accent">
-        {"// SOBRE"}
-      </div>
-      <h1 className="text-[clamp(32px,5vw,52px)] font-semibold leading-tight tracking-tight">
-        Sobre Victor Schmidt
-      </h1>
-      <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-text-2">
-        Desenvolvedor Full Stack com cerca de 2 anos de experiência construindo
-        sistemas escaláveis. Especialista em orquestração de infraestrutura,
-        CI/CD e automação inteligente com IA. Obcecado por qualidade de código,
-        observabilidade e por entregar valor real — gosto de resolver problemas
-        reais com tecnologia moderna.
-      </p>
-      <div className="mt-8 flex flex-wrap gap-3.5">
-        <Button href={SITE.resume} download>
-          Baixar CV →
-        </Button>
-        <Button href={SITE.linkedin} variant="secondary" external>
-          LinkedIn
-        </Button>
+    <>
+      <div className="mx-auto max-w-[840px] px-6 pt-20 lg:px-8">
+        <Reveal>
+          <div className="mb-3 flex items-center gap-3 font-mono text-xs tracking-[0.14em] text-accent">
+            <span className="h-px w-8 bg-accent-line" aria-hidden />
+            {"// SOBRE"}
+          </div>
+          <h1 className="text-[clamp(32px,5vw,52px)] font-semibold leading-tight tracking-tight">
+            Sobre Victor Schmidt
+          </h1>
+          <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-text-2">
+            Desenvolvedor Full Stack com cerca de 2 anos de experiência
+            construindo sistemas escaláveis. Especialista em orquestração de
+            infraestrutura, CI/CD e automação inteligente com IA. Obcecado por
+            qualidade de código, observabilidade e por entregar valor real —
+            gosto de resolver problemas reais com tecnologia moderna.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3.5">
+            <Button href={SITE.resume} download>
+              Baixar CV →
+            </Button>
+            <Button href={SITE.linkedin} variant="secondary" external>
+              LinkedIn
+            </Button>
+          </div>
+        </Reveal>
       </div>
 
-      {/* Experience timeline */}
-      <section className="mt-20">
-        <div className="mb-10 flex items-baseline gap-4">
-          <span className="font-mono text-[13px] text-accent">01</span>
-          <h2 className="text-[28px] font-semibold tracking-tight">
-            Experiência
-          </h2>
+      {/* Experiência — banda elevada com linha do tempo */}
+      <section className="mt-20 border-y border-border bg-elev">
+        <div className="mx-auto max-w-[840px] px-6 py-24 lg:px-8">
+          <SectionHeader
+            number="01"
+            kicker="EXPERIÊNCIA"
+            title="Linha do tempo"
+          />
+          <div className="relative grid gap-8 border-l border-border pl-8">
+            {experiences.map((exp, i) => (
+              <Reveal key={exp.company} delay={i * 0.1}>
+                <div className="relative">
+                  <span
+                    aria-hidden
+                    className="absolute -left-[37px] top-2 h-2.5 w-2.5 rounded-full border border-accent-line bg-accent shadow-[0_0_8px_var(--accent)]"
+                  />
+                  <div className="rounded-[14px] border border-border bg-surface p-6 transition-colors duration-300 hover:border-accent-line sm:p-8">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 className="text-lg font-semibold">{exp.company}</h3>
+                      <span className="font-mono text-xs text-accent">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <div className="mt-1 text-sm font-medium text-text-2">
+                      {exp.title}
+                    </div>
+                    <p className="mt-3 text-[13px] leading-relaxed text-text-2">
+                      {exp.description}
+                    </p>
+                    <ul className="mt-4 grid gap-2">
+                      {exp.achievements.map((achievement) => (
+                        <li
+                          key={achievement}
+                          className="flex gap-3 text-[13px] leading-relaxed text-text-2"
+                        >
+                          <span aria-hidden className="mt-0.5 text-accent">
+                            →
+                          </span>
+                          {achievement}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {exp.technologies.map((tech) => (
+                        <Badge key={tech} variant="tag">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
-        <div className="grid gap-4">
-          {experiences.map((exp) => (
-            <div
-              key={exp.company}
-              className="rounded-[14px] border border-border bg-surface p-6 sm:p-8"
-            >
+      </section>
+
+      {/* Formação */}
+      <section>
+        <div className="mx-auto max-w-[840px] px-6 py-24 lg:px-8">
+          <SectionHeader number="02" kicker="FORMAÇÃO" title="Formação" />
+          <Reveal>
+            <div className="rounded-[14px] border border-border bg-surface p-6 sm:p-8">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="text-lg font-semibold">{exp.company}</h3>
+                <h3 className="text-lg font-semibold">
+                  BIOPARK — Engenharia de Software
+                </h3>
                 <span className="font-mono text-xs text-accent">
-                  {exp.period}
+                  2024 — 2027
                 </span>
               </div>
-              <div className="mt-1 text-sm font-medium text-text-2">
-                {exp.title}
-              </div>
               <p className="mt-3 text-[13px] leading-relaxed text-text-2">
-                {exp.description}
+                Bacharelado focado em desenvolvimento de sistemas, engenharia
+                de requisitos, qualidade de software e metodologias ágeis.
               </p>
-              <ul className="mt-4 grid gap-2">
-                {exp.achievements.map((achievement) => (
-                  <li
-                    key={achievement}
-                    className="flex gap-3 text-[13px] leading-relaxed text-text-2"
-                  >
-                    <span aria-hidden className="mt-0.5 text-accent">
-                      →
-                    </span>
-                    {achievement}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {exp.technologies.map((tech) => (
-                  <Badge key={tech} variant="tag">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
             </div>
-          ))}
+          </Reveal>
         </div>
       </section>
 
-      {/* Education */}
-      <section className="mt-20">
-        <div className="mb-10 flex items-baseline gap-4">
-          <span className="font-mono text-[13px] text-accent">02</span>
-          <h2 className="text-[28px] font-semibold tracking-tight">Formação</h2>
-        </div>
-        <div className="rounded-[14px] border border-border bg-surface p-6 sm:p-8">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="text-lg font-semibold">
-              BIOPARK — Engenharia de Software
-            </h3>
-            <span className="font-mono text-xs text-accent">2024 — 2027</span>
-          </div>
-          <p className="mt-3 text-[13px] leading-relaxed text-text-2">
-            Bacharelado focado em desenvolvimento de sistemas, engenharia de
-            requisitos, qualidade de software e metodologias ágeis.
-          </p>
+      {/* Skills — banda elevada */}
+      <section className="border-t border-border bg-elev">
+        <div className="mx-auto max-w-[840px] px-6 py-24 lg:px-8">
+          <SectionHeader
+            number="03"
+            kicker="STACK"
+            title="Stack & competências"
+          />
+          <SkillsGrid />
         </div>
       </section>
-
-      {/* Skills */}
-      <section className="mt-20">
-        <div className="mb-10 flex items-baseline gap-4">
-          <span className="font-mono text-[13px] text-accent">03</span>
-          <h2 className="text-[28px] font-semibold tracking-tight">
-            Stack & competências
-          </h2>
-        </div>
-        <SkillsGrid />
-      </section>
-    </div>
+    </>
   );
 }

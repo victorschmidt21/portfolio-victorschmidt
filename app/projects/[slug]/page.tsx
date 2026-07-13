@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, getProject } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
+import { Reveal } from "@/components/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
@@ -77,16 +78,15 @@ export default async function ProjectPage({
             ["Solução", project.solution],
             ["Resultado", project.result],
           ] as const
-        ).map(([label, text]) => (
-          <div
-            key={label}
-            className="rounded-[14px] border border-border bg-surface p-6"
-          >
-            <div className="mb-3 font-mono text-[11px] tracking-[0.12em] text-accent">
-              {label.toUpperCase()}
+        ).map(([label, text], i) => (
+          <Reveal key={label} delay={i * 0.1}>
+            <div className="rounded-[14px] border border-border bg-surface p-6 transition-colors duration-300 hover:border-accent-line">
+              <div className="mb-3 font-mono text-[11px] tracking-[0.12em] text-accent">
+                {label.toUpperCase()}
+              </div>
+              <p className="leading-relaxed text-text-2">{text}</p>
             </div>
-            <p className="leading-relaxed text-text-2">{text}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
 

@@ -59,6 +59,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <div className="scroll-progress" aria-hidden />
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />
