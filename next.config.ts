@@ -11,7 +11,8 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Link",
-            value: '</sitemap.xml>; rel="sitemap", </about>; rel="author"',
+            value:
+              '</llms.txt>; rel="service-doc", </sitemap.xml>; rel="sitemap", </about>; rel="author"',
           },
         ],
       },
